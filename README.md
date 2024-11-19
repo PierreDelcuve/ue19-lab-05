@@ -18,4 +18,7 @@ python app.py
 ## Utilisation avec Docker
 1. Construisez l'image Docker :
    docker build -t joke-api-app .
+2. Lancez un conteneur :
+   docker run --rm joke-api-app
+
 
