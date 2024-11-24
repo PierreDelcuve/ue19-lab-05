@@ -28,13 +28,13 @@ jobs:
 
     # Étape 4 : Scanner l'image Docker avec Trivy
     - name: Scan Docker image for vulnerabilities
-      uses: aquasecurity/trivy-action@v0.11.0
+      uses: aquasecurity/trivy-action@v0.11.2
       with:
         image-ref: ghcr.io/${{ github.repository_owner }}/ue19-lab-05:latest
-        format: table # Formate les résultats en tableau lisible
-        exit-code: "0" # Permet de ne pas échouer même si des vulnérabilités sont détectées
-        ignore-unfixed: true # Ignore les vulnérabilités non corrigées
+        format: table       # Affiche les résultats sous forme de tableau
+        exit-code: "0"      # Continue même si des vulnérabilités sont détectées
+        ignore-unfixed: true # Ignore les vulnérabilités sans correctif disponible
 
-    # Étape 5 : Pousser l'image Docker vers le registre (si le scan est acceptable)
+    # Étape 5 : Pousser l'image Docker vers le registre
     - name: Push Docker image
       run: docker push ghcr.io/${{ github.repository_owner }}/ue19-lab-05:latest
